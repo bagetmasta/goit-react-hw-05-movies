@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Link, Header, Container } from './SharedLayout.styled';
 import { Outlet } from 'react-router-dom';
 
@@ -9,10 +10,12 @@ const SharedLayout = () => {
           <Link to="/" end>
             Home
           </Link>
-          <Link to="/movies">Movies</Link>
+          <Link to="movies">Movies</Link>
         </nav>
       </Header>
-      <Outlet />
+      <Suspense fallback={<div>Идет загрузка</div>}>
+        <Outlet />
+      </Suspense>
     </Container>
   );
 };
