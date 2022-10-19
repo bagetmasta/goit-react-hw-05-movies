@@ -38,7 +38,7 @@ const MovieDetails = () => {
     filmDetails;
 
   const year = new Date(release_date).getFullYear();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = location?.state?.from ?? '/';
 
   return (
     <>
@@ -69,10 +69,14 @@ const MovieDetails = () => {
         <p>Additional information</p>
         <ul>
           <li>
-            <NavLink to="cast">Cast</NavLink>
+            <NavLink to="cast" state={{ from: backLinkHref }}>
+              Cast
+            </NavLink>
           </li>
           <li>
-            <NavLink to="reviews">Reviews</NavLink>
+            <NavLink to="reviews" state={{ from: backLinkHref }}>
+              Reviews
+            </NavLink>
           </li>
         </ul>
         <Suspense fallback={<div>Идет загрузка</div>}>
